@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MMLanScan'
-  s.version          = '3.1.1'
+  s.version          = '3.1.2'
   s.summary          = 'MMLanScan is an open source project for iOS that helps you scan your network and shows the available devices.'
   
   s.description  = <<-DESC
