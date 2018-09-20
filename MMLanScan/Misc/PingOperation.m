@@ -146,20 +146,20 @@ static const float PING_TIMEOUT = 1;
     [self finishedPing];
 }
 
-- (void)simplePing:(SimplePing *)pinger didFailToSendPacket:(NSData *)packet error:(NSError *)error {
+- (void)simplePing:(SimplePing *)pinger didFailToSendPacket:(NSData *)packet sequenceNumber:(uint16_t)sequenceNumber error:(NSError *)error {
     
     [pingTimer invalidate];
     errorMessage = error;
     [self finishedPing];
 }
 
-- (void)simplePing:(SimplePing *)pinger didReceivePingResponsePacket:(NSData *)packet {
+- (void)simplePing:(SimplePing *)pinger didReceivePingResponsePacket:(NSData *)packet sequenceNumber:(uint16_t)sequenceNumber {
    
     [pingTimer invalidate];
     [self finishedPing];
 }
 
-- (void)simplePing:(SimplePing *)pinger didSendPacket:(NSData *)packet {
+- (void)simplePing:(SimplePing *)pinger didSendPacket:(NSData *)packet sequenceNumber:(uint16_t)sequenceNumber {
     //This timer will fired pingTimeOut in case the SimplePing don't answer in the specific time
     pingTimer = [NSTimer scheduledTimerWithTimeInterval:PING_TIMEOUT target:self selector:@selector(pingTimeOut:) userInfo:nil repeats:NO];
 }
